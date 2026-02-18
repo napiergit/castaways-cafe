@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div style={{ fontFamily: "'Outfit', sans-serif", color: '#1e293b' }}>
+    <div>
       <Navbar />
       <Hero />
       <Features />
