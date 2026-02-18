@@ -1,36 +1,61 @@
 import React from 'react';
-import { Anchor, Coffee, Sun } from 'lucide-react';
+import { Anchor, Coffee, Sun, Ship } from 'lucide-react'; // Assuming valid icons
+import { motion } from 'framer-motion';
 
-const FeatureCard = ({ icon: Icon, title, description }) => (
-    <div className="group p-8 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:-translate-y-1">
-        <div className="bg-sand p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-slate-blue transition-colors">
-            <Icon className="w-8 h-8 text-slate-blue group-hover:text-white transition-colors" />
-        </div>
-        <h3 className="text-xl font-serif font-bold mb-3 text-charcoal">{title}</h3>
-        <p className="text-gray-500 leading-relaxed">{description}</p>
-    </div>
-);
+const features = [
+    {
+        icon: <Ship className="w-8 h-8 text-gold" />,
+        title: "Boat Accessible",
+        description: "Pull up right to our dock. We're one of the few spots in Point Pleasant where you can arrive by boat."
+    },
+    {
+        icon: <Coffee className="w-8 h-8 text-gold" />,
+        title: "All Day Breakfast",
+        description: "Craving pancakes at noon? We've got you covered with our hearty, comfort-food breakfast menu."
+    },
+    {
+        icon: <Sun className="w-8 h-8 text-gold" />,
+        title: "Outdoor Dining",
+        description: "Enjoy the fresh air and sunshine on our patio while you dine on your favorites."
+    },
+    {
+        icon: <Anchor className="w-8 h-8 text-gold" />,
+        title: "Local Favorite",
+        description: "A beloved spot for locals and visitors alike, knowing for our friendly atmosphere and great food."
+    }
+];
 
 const Features = () => {
     return (
-        <section className="py-24 bg-sand/50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <FeatureCard
-                        icon={Anchor}
-                        title="Boat Accessible"
-                        description="Dock your boat and enjoy a delicious meal right on the water. The perfect pitstop for your day out."
-                    />
-                    <FeatureCard
-                        icon={Coffee}
-                        title="All Day Breakfast"
-                        description="From our signature omelets to fluffy pancakes, enjoy your breakfast favorites anytime."
-                    />
-                    <FeatureCard
-                        icon={Sun}
-                        title="Outdoor Seating"
-                        description="Soak up the sun and enjoy the fresh air on our spacious outdoor patio."
-                    />
+        <section className="py-20 bg-white relative">
+            <div className="container mx-auto px-4">
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">Why Castaways?</h2>
+                    <div className="h-1 w-20 bg-gold mx-auto rounded-full"></div>
+                    <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+                        Experience the unique charm of our waterside location and comfort food classics.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {features.map((feature, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            className="p-6 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm hover:shadow-md transition-shadow text-center group"
+                        >
+                            <div className="inline-flex items-center justify-center p-3 rounded-xl bg-navy/5 text-navy mb-6 group-hover:bg-navy group-hover:text-white transition-colors">
+                                {feature.icon}
+                            </div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                            <p className="text-gray-600 leading-relaxed">
+                                {feature.description}
+                            </p>
+                        </motion.div>
+                    ))}
                 </div>
             </div>
         </section>
