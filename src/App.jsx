@@ -8,16 +8,12 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="font-sans text-gray-900">
+    <div style={{ fontFamily: "'Outfit', sans-serif", color: '#1e293b' }}>
       <Navbar />
       <Hero />
       <Features />
-      <div id="menu" className="py-16 bg-gray-50">
-        <MenuGrid />
-      </div>
-      <div id="about" className="py-16">
-        <About />
-      </div>
+      <MenuGrid />
+      <About />
       <Footer />
     </div>
   );
